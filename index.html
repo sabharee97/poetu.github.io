@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>poetu.io</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: "Arial", sans-serif;
+        }
+        
+        .fade-in-out {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 0 0 10px white;
+            animation: fade 20s linear infinite;
+            font-family: "Playfair Display", serif;
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes fade {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Welcome to poetu.io</h1>
-  <p>Express your thoughts and emotions through poetry.</p>
-
-  <h2>About</h2>
-  <p>poetu.io is a platform dedicated to poetry enthusiasts. Whether you're a seasoned poet or just starting out, this is the place to share your creative expressions.</p>
-
-  <h2>Explore</h2>
-  <ul>
-    <li><a href="#">Featured Poems</a></li>
-    <li><a href="#">Poetry Contests</a></li>
-    <li><a href="#">Writing Resources</a></li>
-  </ul>
-
-  <h2>Get Started</h2>
-  <p>Join poetu.io and start sharing your poetry today! Sign up for an account to create and publish your poems.</p>
-
-  <footer>
-    <p>&copy; 2023 poetu.io. All rights reserved.</p>
-  </footer>
+    <div class="fade-in-out">
+        <h1>poetu.io</h1>
+    </div>
 </body>
 </html>

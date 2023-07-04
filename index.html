@@ -2,9 +2,17 @@
 <html>
 <head>
     <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        
         body {
             background-color: #222C3C; /* Dark blue background color */
             font-family: "Arial", sans-serif;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover; /* Adjust the background size to cover the entire screen */
         }
         
         .fade-in-out {
@@ -31,11 +39,19 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <link rel="icon" href="heart.png" type="image/png"> <!-- Add the link tag for favicon -->
+    <link rel="icon" href="./media/heart.png" type="image/png"> <!-- Add the correct path for the favicon -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var images = ['./media/moon.jpg', './media/moon1.jpg', './media/moon2.jpg', './media/ink.jpg']; /* Update the paths for the background images */
+            var randomImageIndex = Math.floor(Math.random() * images.length);
+            var randomImage = images[randomImageIndex];
+            document.body.style.backgroundImage = 'url(' + randomImage + ')';
+        });
+    </script>
 </head>
 <body>
     <div class="fade-in-out">
-        <a href="https://instagram.com/themanintheblue" target="_blank" style="text-decoration: none; color: inherit;"> <!-- Add the target="_blank" attribute to open in a new window -->
+        <a href="https://instagram.com/themanintheblue" target="_blank" style="text-decoration: none; color: inherit;">
             <h1>poetu.io</h1>
         </a>
     </div>

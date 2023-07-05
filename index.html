@@ -5,13 +5,64 @@
     <link rel="stylesheet" href="./styles/styles.css"> <!-- Link the external CSS file in the "styles" folder -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="icon" href="./media/heart.png" type="image/png"> <!-- Add the correct path for the favicon -->
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var images = ['./media/moon.jpg', './media/moon1.jpg', './media/moon2.jpg', './media/ink.jpg']; /* Update the paths for the background images */
-            var randomImageIndex = Math.floor(Math.random() * images.length);
-            var randomImage = images[randomImageIndex];
-            document.body.style.backgroundImage = 'url(' + randomImage + ')';
+document.addEventListener('DOMContentLoaded', function() {
+    var images = ['./media/moon.jpg', './media/moon1.jpg', './media/moon2.jpg', './media/ink.jpg'];
+    var randomImageIndex = Math.floor(Math.random() * images.length);
+    var randomImage = images[randomImageIndex];
+    document.body.style.backgroundImage = 'url(' + randomImage + ')';
+
+    // Make the introduction card draggable
+    var card = document.querySelector('.introduction-card');
+    var isDragging = false;
+    var initialX;
+    var initialY;
+
+    card.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        initialX = e.clientX - card.offsetLeft;
+        initialY = e.clientY - card.offsetTop;
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            e.preventDefault();
+            card.style.left = e.clientX - initialX + 'px';
+            card.style.top = e.clientY - initialY + 'px';
+        }
+    });
+
+    document.addEventListener('mouseup', function() {
+        isDragging = false;
+    });
+
+    // Fetch introduction data from JSON file
+    fetch('./layouts/data/json/intro.json')
+        .then(response => response.json())
+        .then(data => {
+            var title = data.title;
+            var description = data.description;
+
+            // Create heading element
+            var headingElement = document.createElement('h2');
+            headingElement.textContent = title;
+
+            // Create paragraph element
+            var paragraphElement = document.createElement('p');
+            paragraphElement.textContent = description;
+
+            // Append heading and paragraph to introduction card
+            var introductionCard = document.querySelector('.introduction-card');
+            introductionCard.appendChild(headingElement);
+            introductionCard.appendChild(paragraphElement);
+        })
+        .catch(error => {
+            console.log('Error fetching introduction data:', error);
         });
+});
+
+
     </script>
 </head>
 <body>
@@ -19,6 +70,8 @@
         <a href="https://instagram.com/themanintheblue" target="_blank" style="text-decoration: none; color: inherit;">
             <h1>poetu.io</h1>
         </a>
+    </div>
+    <div class="introduction-card">
     </div>
 </body>
 </html>

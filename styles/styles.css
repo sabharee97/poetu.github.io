@@ -34,7 +34,7 @@ body {
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
-    opacity: 0.9; /* Set the opacity */
+    opacity: 0.7; /* Set the opacity */
     cursor: move; /* Set the cursor style to indicate draggability */
     position: absolute; /* Position the card absolutely for draggable behavior */
     left: 50%;

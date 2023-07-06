@@ -11,44 +11,6 @@
             var randomImageIndex = Math.floor(Math.random() * images.length);
             var randomImage = images[randomImageIndex];
             document.body.style.backgroundImage = 'url(' + randomImage + ')';
-
-            // Make the introduction card draggable
-            var card = document.querySelector('.introduction-card');
-            var isDragging = false;
-            var initialX;
-            var initialY;
-
-            function startDragging(e) {
-                if (e.type === 'touchstart') {
-                    initialX = e.touches[0].clientX - card.offsetLeft;
-                    initialY = e.touches[0].clientY - card.offsetTop;
-                } else {
-                    initialX = e.clientX - card.offsetLeft;
-                    initialY = e.clientY - card.offsetTop;
-                }
-                isDragging = true;
-            }
-
-            function dragCard(e) {
-                if (!isDragging) return;
-                e.preventDefault();
-                var x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-                var y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-                card.style.left = x - initialX + 'px';
-                card.style.top = y - initialY + 'px';
-            }
-
-            function stopDragging() {
-                isDragging = false;
-            }
-
-            card.addEventListener('mousedown', startDragging);
-            card.addEventListener('touchstart', startDragging);
-            document.addEventListener('mousemove', dragCard);
-            document.addEventListener('touchmove', dragCard);
-            document.addEventListener('mouseup', stopDragging);
-            document.addEventListener('touchend', stopDragging);
-
             // Fetch introduction data from JSON file
             fetch('./layouts/data/json/intro.json')
                 .then(response => response.json())
@@ -81,6 +43,5 @@
             <h1>poetu.io</h1>
         </a>
     </div>
-   <!-- <div class="introduction-card">  </div> -->
 </body>
 </html>
